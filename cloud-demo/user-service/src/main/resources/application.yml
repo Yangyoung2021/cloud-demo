@@ -1,19 +1,19 @@
 server:
   port: 8081
 spring:
-  cloud:
-    nacos:
-      server-addr: localhost:8848
-      discovery:
-        cluster-name: SZ
-        namespace: 6dc20eda-d177-4c2d-9130-1a73bf07f198
-  application:
-    name: userService
   datasource:
     url: jdbc:mysql://localhost:3306/cloud_user?useSSL=false
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: userService
+
+  cloud:
+    nacos:
+      server-addr: localhost:8848 # nacos 地址
+      discovery:
+        cluster-name: HZ
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
@@ -24,9 +24,8 @@ logging:
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
 
-pattern:
-  dateFormatter: yyyy/MM/dd HH:mm:ss
 
+# eureka 注册
 #eureka:
 #  client:
 #    service-url:
