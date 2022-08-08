@@ -1,8 +1,14 @@
 server:
   port: 8081
 spring:
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        cluster-name: SZ
+        namespace: 6dc20eda-d177-4c2d-9130-1a73bf07f198
   application:
-    name: user-service
+    name: userService
   datasource:
     url: jdbc:mysql://localhost:3306/cloud_user?useSSL=false
     username: root
@@ -18,7 +24,10 @@ logging:
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:10086/eureka
+pattern:
+  dateFormatter: yyyy/MM/dd HH:mm:ss
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:10086/eureka

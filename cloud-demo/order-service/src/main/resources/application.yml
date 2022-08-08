@@ -1,8 +1,14 @@
 server:
   port: 8080
 spring:
+  cloud:
+    nacos:
+      server-addr: localhost:8848 # 配置nacos地址
+      discovery:
+        cluster-name: SZ
+        namespace: 6dc20eda-d177-4c2d-9130-1a73bf07f198
   application:
-    name: order-server
+    name: orderServer
   datasource:
     url: jdbc:mysql://localhost:3306/cloud_order?useSSL=false
     username: root
@@ -18,8 +24,10 @@ logging:
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
 
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:10086/eureka
+userService:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:10086/eureka
