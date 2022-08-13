@@ -3,6 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cloud-demo/cloud-demo.iml" filepath="$PROJECT_DIR$/cloud-demo/cloud-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud-demo/eurekaserver/eurekaserver.iml" filepath="$PROJECT_DIR$/cloud-demo/eurekaserver/eurekaserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud-demo/feign-api/feign-api.iml" filepath="$PROJECT_DIR$/cloud-demo/feign-api/feign-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud-demo/gateway/gateway.iml" filepath="$PROJECT_DIR$/cloud-demo/gateway/gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/cloud-demo/order-service/order-service.iml" filepath="$PROJECT_DIR$/cloud-demo/order-service/order-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/cloud-demo/user-service/user-service.iml" filepath="$PROJECT_DIR$/cloud-demo/user-service/user-service.iml" />
     </modules>

@@ -13,6 +13,8 @@ spring:
       server-addr: localhost:8848 # nacos 地址
       discovery:
         cluster-name: HZ # 配置集群名称
+#        namespace: d386bb28-5654-4380-af25-b4752de8e370
+        ephemeral: false # 设置为非临时实例
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
@@ -22,6 +24,7 @@ logging:
     cn.itcast: debug
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
+
 
 # eureka 注册
 #eureka:
@@ -34,8 +37,22 @@ userService:
   ribbon:
     NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule # 负载均衡规则实现
 
+pattern:
+  dateformat: yyyy年MM月dd HH:mm:ss
 # 配置ribbon的加载规则
 ribbon:
   eager-load:
     clients: "userService"
     enabled: true
+
+feign:
+  client:
+    config:
+      # 要调用服务的名称
+      user-center:
+        loggerLevel: BASIC
+  httpclient:
+    connection-timeout: 200 # 最大等待时间ms
+    enabled: true # 是否开启连接池
+    max-connections: 200 # 最大连接数
+    max-connections-per-route: 50 # 每个路径的最大连接数

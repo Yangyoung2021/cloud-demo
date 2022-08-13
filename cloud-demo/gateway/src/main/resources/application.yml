@@ -1,0 +1,37 @@
+# 网关的功能：
+#   一、路由请求到具体的服务中
+#      通过路径过滤器将请求的url路由到具体的服务中，并通过nacos做到负载均衡的效果
+#   二、权限认证
+#      通过请求的参数的值或者是否具有请求参数获取当前对象是否具有访问权限，从而达到权限认证的功能
+#   三、请求限流
+#
+#      微服务中每个请求一定要先经过网关才能转到具体的服务
+#
+#      跨域问题：
+#        浏览器禁止请求的发起者与服务端发生跨域ajax请求导致请求被拦截的问题
+#
+
+server:
+  port: 10010
+spring:
+  application:
+    name: gateway #服务名称，因为需要注册到nacos中心，所以一定要名字
+  cloud:
+    nacos:
+      server-addr: localhost:8848 # 配置nacos地址，获取微服务的信息进行负载均衡并将自己注册到nacos
+    gateway:
+      routes: # 路由设置
+        - id: user-service # 唯一标识
+          uri: lb://userService # 服务名称，可以直接使用服务名称，但是当前名称可以采用负载均衡
+          predicates:   # 断言工厂，可添加多个断言，此处也是进行权限认证的重点
+            - Path=/user/** # 路径断言，符合路径则进行路由，更多直接访问官网
+          filters: # 添加请求头过滤器，能直接将配置信息添加到请求头
+            - AddRequestHeader=name, zhangsan
+        - id: order-service
+          uri: lb://orderService # 服务名称
+          predicates:
+            - Path=/order/**
+
+
+      default-filters:	# 默认的配置过滤器，全局生效并且最先执行
+        - AddRequestParameter=red, blue

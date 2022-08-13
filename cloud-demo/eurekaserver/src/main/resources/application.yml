@@ -1,0 +1,15 @@
+
+# 服务运行端口号
+server:
+  port: 10086
+
+# 服务名称
+spring:
+  application:
+    name: eurekaserver
+
+# 将自己注册到eureka服务器中（为了集群中数据同步）
+eureka:
+  client:
+    fetch-registry: false
+    service-url: http://localhost:10086/eureka
