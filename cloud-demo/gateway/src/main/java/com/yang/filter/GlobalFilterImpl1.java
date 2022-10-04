@@ -20,11 +20,16 @@ public class GlobalFilterImpl1 implements GlobalFilter {
         ServerHttpRequest request = exchange.getRequest();
         // 获取参数中具体的值
         MultiValueMap<String, String> queryParams = request.getQueryParams();
+
+        // 判定允许访问条件
         if ("".equals(queryParams.getFirst("ddd"))) {
             return chain.filter(exchange);
         }
+        // 禁止访问
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
-        return exchange.getResponse().setComplete();
+
+//        return exchange.getResponse().setComplete();
+        return chain.filter(exchange);
     }
 }
